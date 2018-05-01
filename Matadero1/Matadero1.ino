@@ -3,6 +3,7 @@
 #define CARAS 5
 #define DELAY_APAGAR 0
 #define DELAY_ENCENDER 0
+#define DELAY_FADE_CUBO 100
 
 int pinesCaras[5] = {5, 4, 0, 2, 14};
 
@@ -68,7 +69,7 @@ void random_sweep_cubo(int red, int green, int blue) {
       if (i == CARAS) {
         int espiral[16] = {0,  1,  2, 3, 7, 11, 15, 14,
                            13, 12, 8, 4, 5, 6,  10, 9};
-        dibujar_patron(patron, i, red, green, blue);
+        dibujar_patron(espiral, i, red, green, blue);
       }
       for (int j = f - 4; j <= f; j++) {
         cubo[i].setPixelColor(j, red, blue, green);
@@ -79,7 +80,7 @@ void random_sweep_cubo(int red, int green, int blue) {
   }
 }
 
-void patron(int patron[], int cara, int red, int green, int blue) {
+void dibujar_patron(int patron[], int cara, int red, int green, int blue) {
   for (int i = 0; i < sizeof(patron); i++) {
     cubo[cara].setPixelColor(i, red, green, blue);
     cubo[cara].show();
