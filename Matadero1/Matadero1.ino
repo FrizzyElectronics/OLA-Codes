@@ -62,7 +62,7 @@ void random_sweep() {
   }
 }
 
-void random_sweep_cubo(red, green, blue) {
+void random_sweep_cubo(int red, int green, int blue) {
   for (int f = NUMPIXELS; f >= 0; f -= 4) {
     for (int i = 0; i <= CARAS; i++) {
       if (i == CARAS) {
@@ -79,7 +79,7 @@ void random_sweep_cubo(red, green, blue) {
   }
 }
 
-void patron(int patron[], cara, red, green, blue) {
+void patron(int patron[], int cara, int red, int green, int blue) {
   for (int i = 0; i < sizeof(patron); i++) {
     cubo[cara].setPixelColor(i, red, green, blue);
     cubo[cara].show();
