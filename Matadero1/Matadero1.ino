@@ -3,6 +3,7 @@
 #define CARAS 5
 #define DELAY_APAGAR 0
 #define DELAY_ENCENDER 0
+#define DELAY_SWEEP_CUBO 75
 
 int pinesCaras[5] = {5, 4, 0, 2, 14};
 
@@ -24,9 +25,9 @@ void setup() {
 void loop() {
   
   apagado();
-  encendido_blanco();
-  random_sweep();
-  fade_cube();
+  //encendido_blanco();
+  //fade_cube();
+  random_sweep_cubo(255,255,0);
   //random_led_face();
   
   }
@@ -50,13 +51,13 @@ void encendido_blanco() {
   }
 }
 
-void random_sweep_cubo(red, green, blue) {
+void random_sweep_cubo(int red, int green, int blue) {
   for (int f = NUMPIXELS; f >= 0; f -= 4) {
     for (int i = 0; i < CARAS - 1; i++) {
       for (int j = f - 4; j <= f; j++) {
         cubo[i].setPixelColor(j, red, blue, green);
         cubo[i].show();
-        delay(DELAY_FADE_CUBO);
+        delay(DELAY_SWEEP_CUBO);
       }
     }
   }
