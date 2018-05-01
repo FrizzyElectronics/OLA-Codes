@@ -4,7 +4,7 @@
 #define DELAY_ENCENDER 0
 #define DELAY_SWEEP_CUBO 75
 #define DELAY_PISOS 150
-#define DELAY_FADE_CUBO 75
+#define DELAY_FADE_CUBO 20
 
 int pinesCaras[5] = {5, 4, 0, 2, 14};
 
@@ -25,7 +25,7 @@ void setup() {
 
 void loop() {
 
-  int modo = 1;
+  int modo = 3;
 
   switch(modo){
     case 0:
@@ -50,8 +50,13 @@ void loop() {
       random_sweep_cubo(0,0,0);
     break;
     case 2:
+      pisos(255,0,0);
+      pisos(255,255,0);
+      pisos(255,0,255);
+      pisos(0,0,255);
     break;
     case 3:
+      fade_cube();
     break;
     case 4:
     break;
@@ -111,18 +116,18 @@ void dibujar_patron(int patron[], int cara, int red, int green, int blue) {
   }
 }
 
-void pisos() {
+void pisos(int red, int green, int blue) {
   for (int f = NUMPIXELS - 1; f >= 0; f -= 4) { //15 11 7 3
     for (int k = 0; k <= 3; k++) {
       for (int i = f; i >= f - 3; i--) {
-        cubo[k].setPixelColor(i, 255, 255, 0);
+        cubo[k].setPixelColor(i, red, green, blue);
       }
       cubo[k].show();
     }
     delay(DELAY_PISOS);
   }
   int espiral[16] = {0, 1, 2, 3, 7, 11, 15, 14, 13, 12, 8, 4, 5, 6, 10, 9};
-  dibujar_patron_pisos(espiral, 4, 255, 255, 0);
+  dibujar_patron_pisos(espiral, 4,  red, green, blue);
 }
 
 void dibujar_patron_pisos(int patron[], int cara, int red, int green, int blue) {
