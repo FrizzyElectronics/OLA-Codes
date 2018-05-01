@@ -64,13 +64,26 @@ void random_sweep() {
 
 void random_sweep_cubo(red, green, blue) {
   for (int f = NUMPIXELS; f >= 0; f -= 4) {
-    for (int i = 0; i < CARAS - 1; i++) {
+    for (int i = 0; i <= CARAS; i++) {
+      if (i == CARAS) {
+        int espiral[16] = {0,  1,  2, 3, 7, 11, 15, 14,
+                           13, 12, 8, 4, 5, 6,  10, 9};
+        dibujar_patron(patron, i, red, green, blue);
+      }
       for (int j = f - 4; j <= f; j++) {
         cubo[i].setPixelColor(j, red, blue, green);
         cubo[i].show();
         delay(DELAY_FADE_CUBO);
       }
     }
+  }
+}
+
+void patron(int patron[], cara, red, green, blue) {
+  for (int i = 0; i < sizeof(patron); i++) {
+    cubo[cara].setPixelColor(i, red, green, blue);
+    cubo[cara].show();
+    delay(DELAY_FADE_CUBO);
   }
 }
 
