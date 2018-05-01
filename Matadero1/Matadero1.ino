@@ -82,9 +82,9 @@ void dibujar_patron(int patron[], int cara, int red, int green, int blue) {
 }
 
 void fade_cube() {
-  int red;
-  int green;
-  int blue;
+  int red = 255;
+  int green = 0;
+  int blue = 0;
   for (green = 0; green < 255; green++) {
     for (int i = 0; i < CARAS; i++) {
       for (int j = 0; j < NUMPIXELS; j++) {
