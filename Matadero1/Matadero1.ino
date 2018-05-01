@@ -4,6 +4,7 @@
 #define DELAY_APAGAR 0
 #define DELAY_ENCENDER 0
 #define DELAY_SWEEP_CUBO 75
+#define DELAY_PISOS 75
 
 int pinesCaras[5] = {5, 4, 0, 2, 14};
 
@@ -27,8 +28,9 @@ void loop() {
   apagado();
   //encendido_blanco();
   //fade_cube();
-  random_sweep_cubo(255,255,0);
+  //random_sweep_cubo(255,255,0);
   //random_led_face();
+  pisos();
   
   }
 
@@ -59,6 +61,16 @@ void random_sweep_cubo(int red, int green, int blue) {
         cubo[i].show();
         delay(DELAY_SWEEP_CUBO);
       }
+    }
+  }
+}
+
+void pisos(){
+  for(int f=NUMPIXELS; f>=0; f-=4){
+    for(int i=0; i<5; i++){
+        cubo[i].setPixelColor(f, 255, 0, 0);
+        cubo[i].show();
+        delay(DELAY_PISOS);
     }
   }
 }
