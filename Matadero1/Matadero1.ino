@@ -1,10 +1,9 @@
 #include <Adafruit_NeoPixel.h>
 #define NUMPIXELS 16
 #define CARAS 5
-#define DELAY_APAGAR 0
 #define DELAY_ENCENDER 0
 #define DELAY_SWEEP_CUBO 75
-#define DELAY_PISOS 75
+#define DELAY_PISOS 150
 
 int pinesCaras[5] = {5, 4, 0, 2, 14};
 
@@ -25,7 +24,7 @@ void setup() {
 
 void loop() {
   
-  //apagado();
+  apagado();
   //encendido_blanco();
   //fade_cube();
   //random_sweep_cubo(255,255,0);
@@ -66,13 +65,14 @@ void random_sweep_cubo(int red, int green, int blue) {
 }
 
 void pisos(){
-  
   for(int f=NUMPIXELS-1; f>=0; f-=4){  //15 11 7 3
+    for (int k=0;k<=3;k++){
     for(int i=f; i>=f-3; i--){
-        cubo[0].setPixelColor(i, 255, 255, 0);   
+        cubo[k].setPixelColor(i, 255, 255, 0);   
     }
-    cubo[0].show();
-    delay(500);
+    cubo[k].show();
+  }
+  delay(DELAY_PISOS);
   }
 }
 
