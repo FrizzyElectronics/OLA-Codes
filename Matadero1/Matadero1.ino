@@ -70,12 +70,13 @@ void random_sweep_cubo(int red, int green, int blue) {
     }
   }
   int espiral[16] = {0, 1, 2, 3, 7, 11, 15, 14, 13, 12, 8, 4, 5, 6, 10, 9};
-  dibujar_patron(espiral, 5, red, green, blue);
+  dibujar_patron(espiral, 4, red, green, blue);
 }
 
 void dibujar_patron(int patron[], int cara, int red, int green, int blue) {
-  for (int i = 0; i < sizeof(patron); i++) {
-    cubo[cara].setPixelColor(i, red, green, blue);
+  int test_patron = {0, 1, 2, 3, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15};
+  for (int i = 0; i < NUMPIXELS; i++) {
+    cubo[cara].setPixelColor(patron[i], red, green, blue);
     cubo[cara].show();
     delay(DELAY_FADE_CUBO);
   }
