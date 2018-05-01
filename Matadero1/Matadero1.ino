@@ -24,12 +24,24 @@ void setup() {
 
 void loop() {
 
-  int modo = random(0,7);
+  int modo = 1;
 
   switch(modo){
     case 0:
+    encendido(255,255,255,2000);
+    encendido(255,0,255,2000);
+    encendido(255,255,0,2000);
+    encendido(0,255,255,2000); 
     break;
     case 1:
+      random_sweep_cubo(255,0,0);
+      random_sweep_cubo(255,255,0);
+      random_sweep_cubo(255,0,255);
+      random_sweep_cubo(0,255,0);
+      random_sweep_cubo(0,0,255);
+      random_sweep_cubo(0,255,255);
+      random_sweep_cubo(255,255,255);
+      random_sweep_cubo(0,0,0);
     break;
     case 2:
     break;
@@ -59,14 +71,15 @@ void apagado() {
   }
 }
 
-void encendido_blanco() {
+void encendido(int red,int green, int blue, int espera) {
   for (int i = 0; i < CARAS; i++) {
     for (int j = 0; j < NUMPIXELS; j++) {
-      cubo[i].setPixelColor(j, 255, 255, 255);
+      cubo[i].setPixelColor(j, red, green, blue);
       cubo[i].show();
       delay(DELAY_ENCENDER);
     }
   }
+  delay(espera);
 }
 
 void random_sweep_cubo(int red, int green, int blue) {
