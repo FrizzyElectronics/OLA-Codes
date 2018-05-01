@@ -22,14 +22,7 @@ void setup() {
   }
 }
 
-void loop() {
-
-  apagado();
-  encendido_blanco();
-  random_sweep();
-  fade_cube();
-  // random_led_face();
-}
+void loop() { random_sweep_cubo(255, 255, 255); }
 
 void apagado() {
   for (int i = 0; i < CARAS; i++) {
@@ -66,11 +59,6 @@ void random_sweep() {
 void random_sweep_cubo(int red, int green, int blue) {
   for (int f = NUMPIXELS; f >= 0; f -= 4) {
     for (int i = 0; i <= CARAS; i++) {
-      if (i == CARAS) {
-        int espiral[16] = {0,  1,  2, 3, 7, 11, 15, 14,
-                           13, 12, 8, 4, 5, 6,  10, 9};
-        dibujar_patron(espiral, i, red, green, blue);
-      }
       for (int j = f - 4; j <= f; j++) {
         cubo[i].setPixelColor(j, red, blue, green);
         cubo[i].show();
@@ -78,6 +66,8 @@ void random_sweep_cubo(int red, int green, int blue) {
       }
     }
   }
+  int espiral[16] = {0, 1, 2, 3, 7, 11, 15, 14, 13, 12, 8, 4, 5, 6, 10, 9};
+  dibujar_patron(espiral, i, red, green, blue);
 }
 
 void dibujar_patron(int patron[], int cara, int red, int green, int blue) {
