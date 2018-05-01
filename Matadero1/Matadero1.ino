@@ -68,10 +68,11 @@ void random_sweep_cubo(int red, int green, int blue) {
 void pisos(){
   for(int f=NUMPIXELS; f>=0; f-=4){
     for(int i=0; i<5; i++){
-        cubo[i].setPixelColor(f, 255, 0, 0);
-        cubo[i].show();
-        delay(DELAY_PISOS);
+        cubo[0].setPixelColor(f, 255, 0, 0);
+        
     }
+    cubo[0].show();
+    delay(DELAY_PISOS);
   }
 }
 
