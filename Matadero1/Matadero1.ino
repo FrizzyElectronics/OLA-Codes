@@ -25,7 +25,7 @@ void setup() {
 
 void loop() {
   
-  apagado();
+  //apagado();
   //encendido_blanco();
   //fade_cube();
   //random_sweep_cubo(255,255,0);
@@ -66,13 +66,13 @@ void random_sweep_cubo(int red, int green, int blue) {
 }
 
 void pisos(){
-  for(int f=NUMPIXELS; f>=0; f-=4){
-    for(int i=0; i<5; i++){
-        cubo[0].setPixelColor(f, 255, 0, 0);
-        
+  
+  for(int f=NUMPIXELS-1; f>=0; f-=4){  //15 11 7 3
+    for(int i=f; i>=f-3; i--){
+        cubo[0].setPixelColor(i, 255, 255, 0);   
     }
     cubo[0].show();
-    delay(DELAY_PISOS);
+    delay(500);
   }
 }
 
