@@ -50,15 +50,14 @@ void encendido_blanco() {
   }
 }
 
-void random_sweep() {
-  for (int i = 0; i < CARAS - 1; i++) {
-    for (int j = NUMPIXELS; j > 0; j--) {
-      int red = random(255);
-      int blue = random(255);
-      int green = random(255);
-      cubo[i].setPixelColor(j, red, blue, green);
-      cubo[i].show();
-      delay(DELAY_ENCENDER);
+void random_sweep_cubo(red, green, blue) {
+  for (int f = NUMPIXELS; f >= 0; f -= 4) {
+    for (int i = 0; i < CARAS - 1; i++) {
+      for (int j = f - 4; j <= f; j++) {
+        cubo[i].setPixelColor(j, red, blue, green);
+        cubo[i].show();
+        delay(DELAY_FADE_CUBO);
+      }
     }
   }
 }
