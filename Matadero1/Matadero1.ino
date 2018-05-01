@@ -23,15 +23,32 @@ void setup() {
 }
 
 void loop() {
-  
-  apagado();
-  //encendido_blanco();
-  //fade_cube();
-  //random_sweep_cubo(255,255,0);
-  //random_led_face();
-  pisos();
-  
+
+  int modo = random(0,7);
+
+  switch(modo){
+    case 0:
+    break;
+    case 1:
+    break;
+    case 2:
+    break;
+    case 3:
+    break;
+    case 4:
+    break;
+    case 5:
+    break;
+    case 6:
+    break;
+    case 7:
+    break;
+    default:
+    apagado();
+
   }
+
+}
 
 void apagado() {
   for (int i = 0; i < CARAS; i++) {
@@ -64,17 +81,29 @@ void random_sweep_cubo(int red, int green, int blue) {
   }
 }
 
-void pisos(){
-  for(int f=NUMPIXELS-1; f>=0; f-=4){  //15 11 7 3
-    for (int k=0;k<=3;k++){
-    for(int i=f; i>=f-3; i--){
-        cubo[k].setPixelColor(i, 255, 255, 0);   
+void pisos() {
+  for (int f = NUMPIXELS - 1; f >= 0; f -= 4) { //15 11 7 3
+    for (int k = 0; k <= 3; k++) {
+      for (int i = f; i >= f - 3; i--) {
+        cubo[k].setPixelColor(i, 255, 255, 0);
+      }
+      cubo[k].show();
     }
-    cubo[k].show();
+    delay(DELAY_PISOS);
   }
-  delay(DELAY_PISOS);
+  int espiral[16] = {0, 1, 2, 3, 7, 11, 15, 14, 13, 12, 8, 4, 5, 6, 10, 9};
+  dibujar_patron_pisos(espiral, 4, 255, 255, 0);
+}
+
+void dibujar_patron_pisos(int patron[], int cara, int red, int green, int blue) {
+  int test_patron[] = {0, 1, 2, 3, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15};
+  for (int i = 0; i < NUMPIXELS; i++) {
+    cubo[cara].setPixelColor(patron[i], red, green, blue);
+    cubo[cara].show();
+    delay(DELAY_PISOS-100);
   }
 }
+
 
 void fade_cube() {
   int red;
@@ -85,10 +114,10 @@ void fade_cube() {
       for (int j = 0; j < NUMPIXELS; j++) {
         cubo[i].setPixelColor(j, red, blue, green);
         cubo[i].show();
-    delay(DELAY_ENCENDER);
+        delay(DELAY_ENCENDER);
       }
     }
-  
+
   }
 
   for (red = 255; red > 0; red--) {
@@ -96,10 +125,10 @@ void fade_cube() {
       for (int j = 0; j < NUMPIXELS; j++) {
         cubo[i].setPixelColor(j, red, blue, green);
         cubo[i].show();
-    delay(DELAY_ENCENDER);
+        delay(DELAY_ENCENDER);
       }
     }
-    
+
   }
 
   for (blue = 0; blue < 255; blue++) {
@@ -107,10 +136,10 @@ void fade_cube() {
       for (int j = 0; j < NUMPIXELS; j++) {
         cubo[i].setPixelColor(j, red, blue, green);
         cubo[i].show();
-    delay(DELAY_ENCENDER);
+        delay(DELAY_ENCENDER);
       }
     }
-    
+
   }
 
   for (green = 255; green > 0; green--) {
@@ -118,10 +147,10 @@ void fade_cube() {
       for (int j = 0; j < NUMPIXELS; j++) {
         cubo[i].setPixelColor(j, red, blue, green);
         cubo[i].show();
-    delay(DELAY_ENCENDER);
+        delay(DELAY_ENCENDER);
       }
     }
-    
+
   }
 
   for (red = 0; red < 255; red++) {
@@ -129,10 +158,10 @@ void fade_cube() {
       for (int j = 0; j < NUMPIXELS; j++) {
         cubo[i].setPixelColor(j, red, blue, green);
         cubo[i].show();
-    delay(DELAY_ENCENDER);
+        delay(DELAY_ENCENDER);
       }
     }
-  
+
   }
 
   for (blue = 255; blue > 0; blue--) {
@@ -140,10 +169,10 @@ void fade_cube() {
       for (int j = 0; j < NUMPIXELS; j++) {
         cubo[i].setPixelColor(j, red, blue, green);
         cubo[i].show();
-    delay(DELAY_ENCENDER);
+        delay(DELAY_ENCENDER);
       }
     }
-    
+
   }
 }
 
@@ -156,7 +185,7 @@ void random_led_face() {
   for (int i = 0; i < NUMPIXELS * CARAS; i++) {
     int led = random(NUMPIXELS);
     int cara = random(CARAS);
-    int led_en_cara = led*cara;
+    int led_en_cara = led * cara;
     bool encendido = true;
     red = random(255);
     green = random(255);
@@ -175,8 +204,8 @@ void random_led_face() {
     if (encendido == false) {
       cubo[cara].setPixelColor(led, red, green, blue);
       cubo[cara].show();
-    delay(25);
-      
+      delay(25);
+
     }
   }
 }
