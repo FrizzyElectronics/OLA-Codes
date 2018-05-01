@@ -22,7 +22,10 @@ void setup() {
   }
 }
 
-void loop() { random_sweep_cubo(255, 255, 255); }
+void loop() {
+  random_sweep_cubo(100, 0, 0);
+  apagado();
+}
 
 void apagado() {
   for (int i = 0; i < CARAS; i++) {
@@ -67,7 +70,7 @@ void random_sweep_cubo(int red, int green, int blue) {
     }
   }
   int espiral[16] = {0, 1, 2, 3, 7, 11, 15, 14, 13, 12, 8, 4, 5, 6, 10, 9};
-  dibujar_patron(espiral, i, red, green, blue);
+  dibujar_patron(espiral, 5, red, green, blue);
 }
 
 void dibujar_patron(int patron[], int cara, int red, int green, int blue) {
