@@ -7,7 +7,7 @@
 #define DELAY_FADE_CUBO 20
 
 int pinesCaras[5] = {5, 4, 0, 2, 14};
-
+int modo=0;
 Adafruit_NeoPixel cubo[CARAS] = {
   Adafruit_NeoPixel(NUMPIXELS, pinesCaras[0], NEO_GRB + NEO_KHZ800),
   Adafruit_NeoPixel(NUMPIXELS, pinesCaras[1], NEO_GRB + NEO_KHZ800),
@@ -25,8 +25,11 @@ void setup() {
 
 void loop() {
 
-  int modo = 4;
-
+  
+  if(modo>5)
+    modo=0;
+  modo++;
+  
   switch(modo){
     case 0:
     //RED GREEN BLUE ESPERA(en segundos)
@@ -53,13 +56,34 @@ void loop() {
       pisos(255,0,0);
       pisos(255,255,0);
       pisos(255,0,255);
+      pisos(0,255,0);
       pisos(0,0,255);
+      pisos(0,255,255);
+      pisos(255,255,255);
+      pisos(0,0,0);
     break;
     case 3:
       fade_cube();
     break;
     case 4:
       ola();
+      delay(7000);
+    break;
+    case 5:
+      alternos(255,0,0);
+      delay(5000);
+      alternos(255,255,0);
+      delay(5000);
+      alternos(255,0,255);
+      delay(5000);
+      alternos(0,255,0);
+      delay(5000);
+      alternos(0,0,255);
+      delay(5000);
+      alternos(0,255,255);
+      delay(5000);
+      alternos(0,0,0);
+      delay(5000);
     break;
     default:
     apagado();
@@ -302,3 +326,21 @@ void random_led_face() {
   }
 }*/
 
+
+void alternos(int red, int green, int blue) {
+  bool alt = false;
+  int color[8] = {1, 3, 4, 6, 9, 11, 12, 14};
+  int white[8] = {0, 2, 5, 7, 8, 10, 13, 15};
+
+  for (int i = 0; i < CARAS; i++) {
+    for (int j = 0; j < NUMPIXELS / 2; j++) {
+      cubo[i].setPixelColor(color[j], red, green, blue);
+      cubo[i].show();
+    }
+    for (int j = 0; j < NUMPIXELS / 2; j++) {
+      cubo[i].setPixelColor(white[j], 150, 150, 150);
+      cubo[i].show();
+    }
+    cubo[i].show();
+  }
+}
