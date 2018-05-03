@@ -25,7 +25,7 @@ void setup() {
 
 void loop() {
 
-  int modo = 3;
+  int modo = 4;
 
   switch(modo){
     case 0:
@@ -59,16 +59,10 @@ void loop() {
       fade_cube();
     break;
     case 4:
-    break;
-    case 5:
-    break;
-    case 6:
-    break;
-    case 7:
+      ola();
     break;
     default:
     apagado();
-
   }
 
 }
@@ -139,11 +133,10 @@ void dibujar_patron_pisos(int patron[], int cara, int red, int green, int blue) 
   }
 }
 
-
 void fade_cube() {
-  int red;
-  int green;
-  int blue;
+  int red = 255;
+  int green = 0;
+  int blue = 0;
   for (green = 0; green < 255; green++) {
     for (int i = 0; i < CARAS; i++) {
       for (int j = 0; j < NUMPIXELS; j++) {
@@ -152,7 +145,6 @@ void fade_cube() {
         delay(DELAY_ENCENDER);
       }
     }
-
   }
 
   for (red = 255; red > 0; red--) {
@@ -163,7 +155,6 @@ void fade_cube() {
         delay(DELAY_ENCENDER);
       }
     }
-
   }
 
   for (blue = 0; blue < 255; blue++) {
@@ -174,7 +165,6 @@ void fade_cube() {
         delay(DELAY_ENCENDER);
       }
     }
-
   }
 
   for (green = 255; green > 0; green--) {
@@ -185,7 +175,6 @@ void fade_cube() {
         delay(DELAY_ENCENDER);
       }
     }
-
   }
 
   for (red = 0; red < 255; red++) {
@@ -196,7 +185,6 @@ void fade_cube() {
         delay(DELAY_ENCENDER);
       }
     }
-
   }
 
   for (blue = 255; blue > 0; blue--) {
@@ -207,10 +195,71 @@ void fade_cube() {
         delay(DELAY_ENCENDER);
       }
     }
-
   }
 }
 
+void ola(){
+
+    uint32_t c=cubo[0].Color(0, 0, 255);
+    delay(500);
+    cubo[0].setPixelColor(1, c);
+    cubo[0].setPixelColor(2, c);
+
+    cubo[0].setPixelColor(4, c);
+    
+    cubo[0].setPixelColor(7, c);
+
+    cubo[0].setPixelColor(8, c);
+
+    cubo[0].setPixelColor(9, c);
+
+    cubo[0].setPixelColor(10, c);
+
+    cubo[0].setPixelColor(11, c);
+
+    cubo[0].setPixelColor(12, c);
+
+    cubo[0].setPixelColor(15, c);
+    cubo[0].show();
+
+    
+    c=cubo[3].Color(0, 255, 0);
+
+    cubo[3].setPixelColor(0, c);
+
+    cubo[3].setPixelColor(1, c);
+
+    cubo[3].setPixelColor(2, c);
+
+    cubo[3].setPixelColor(3, c);
+
+    cubo[3].setPixelColor(4, c);
+
+    cubo[3].setPixelColor(7, c);
+    cubo[3].setPixelColor(8, c);
+    cubo[3].setPixelColor(11, c);
+    cubo[3].setPixelColor(12, c);
+    cubo[3].setPixelColor(13, c);
+    cubo[3].setPixelColor(14, c);
+    cubo[3].setPixelColor(15, c);
+    cubo[3].show();
+
+
+   c=cubo[4].Color(250, 0, 0);
+    cubo[4].setPixelColor(0, c);
+    cubo[4].setPixelColor(1, c);
+    cubo[4].setPixelColor(2, c);
+    cubo[4].setPixelColor(3, c);
+    cubo[4].setPixelColor(4, c);
+    cubo[4].setPixelColor(8, c);
+    cubo[4].setPixelColor(12, c);
+    cubo[4].show();
+
+delay(200);
+
+  
+}
+/*
 void random_led_face() {
   int leds_on[NUMPIXELS * CARAS] = {};
   int red;
@@ -243,5 +292,5 @@ void random_led_face() {
 
     }
   }
-}
+}*/
 
