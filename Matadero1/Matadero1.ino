@@ -254,6 +254,14 @@ void ola(){
     cubo[4].setPixelColor(8, c);
     cubo[4].setPixelColor(12, c);
     cubo[4].show();
+ 
+    for(int i=0;i<16;i++){
+      cubo[1].setPixelColor(i,40,40,40);
+      cubo[1].show();
+      cubo[2].setPixelColor(i,40,40,40);
+      cubo[2].show();
+
+    }
 
 delay(200);
 
