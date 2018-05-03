@@ -180,15 +180,17 @@ void random_led_face() {
 }
 
 void alternos(int red, int green, int blue) {
+  bool alt = false;
+
   for (int i = 0; i < CARAS; i++) {
-    for (int j = 1; j < NUMPIXELS; j += 2) {
-      cubo[i].setPixelColor(j, red, green, blue);
+    for (int j = 0; j < NUMPIXELS; j++) {
+      if (!alt) {
+        cubo[i].setPixelColor(j, red, green, blue);
+        alt = true;
+      } else if (alt) {
+        cubo[i].setPixelColor(j, 100, 100, 100);
+        alt = false;
+      }
     }
-  }
-  for (int i = 0; i < CARAS; i++) {
-    for (int j = 0; j < NUMPIXELS; j += 2) {
-      cubo[i].setPixelColor(j, 100, 100, 100);
-    }
-    cubo[i].show();
   }
 }
