@@ -189,5 +189,6 @@ void alternos(int red, int green, int blue) {
     for (int j = 0; j < NUMPIXELS; j += 2) {
       cubo[i].setPixelColor(j, 100, 100, 100);
     }
+    cubo[i].show();
   }
 }
