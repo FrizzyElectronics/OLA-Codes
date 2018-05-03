@@ -5,7 +5,7 @@
 #define DELAY_SWEEP_CUBO 75
 #define DELAY_PISOS 150
 #define DELAY_FADE_CUBO 20
-
+int v=5;
 int pinesCaras[5] = {5, 4, 0, 2, 14};
 int modo=0;
 Adafruit_NeoPixel cubo[CARAS] = {
@@ -40,7 +40,7 @@ void loop() {
       encendido(0,0,255,5);
       encendido(0,255,255,5);
       encendido(255,255,255,5);
-      encendido(0,0,0,0.5);
+      encendido(0,0,0,3);
     break;
     case 1:
       random_sweep_cubo(255,0,0);
@@ -49,8 +49,9 @@ void loop() {
       random_sweep_cubo(0,255,0);
       random_sweep_cubo(0,0,255);
       random_sweep_cubo(0,255,255);
-      random_sweep_cubo(255,255,255);
+      random_sweep_cubo(200,200,200);
       random_sweep_cubo(0,0,0);
+      encendido(0,0,0,3);
     break;
     case 2:
       pisos(255,0,0);
@@ -59,11 +60,13 @@ void loop() {
       pisos(0,255,0);
       pisos(0,0,255);
       pisos(0,255,255);
-      pisos(255,255,255);
+      pisos(200,200,200);
       pisos(0,0,0);
+      encendido(0,0,0,3);
     break;
     case 3:
       fade_cube();
+      encendido(0,0,0,3);
     break;
     case 4:
       ola();
@@ -72,18 +75,15 @@ void loop() {
     case 5:
       alternos(255,0,0);
       delay(5000);
-      alternos(255,255,0);
-      delay(5000);
-      alternos(255,0,255);
-      delay(5000);
+    
+
       alternos(0,255,0);
       delay(5000);
       alternos(0,0,255);
       delay(5000);
-      alternos(0,255,255);
-      delay(5000);
       alternos(0,0,0);
       delay(5000);
+      encendido(0,0,0,3);
     break;
     default:
     apagado();
@@ -161,7 +161,7 @@ void fade_cube() {
   int red = 255;
   int green = 0;
   int blue = 0;
-  for (green = 0; green < 255; green++) {
+  for (green = 0; green < 255; green=green+v) {
     for (int i = 0; i < CARAS; i++) {
       for (int j = 0; j < NUMPIXELS; j++) {
         cubo[i].setPixelColor(j, red, blue, green);
@@ -171,7 +171,7 @@ void fade_cube() {
     }
   }
 
-  for (red = 255; red > 0; red--) {
+  for (red = 255; red > 0; red=red-v) {
     for (int i = 0; i < CARAS; i++) {
       for (int j = 0; j < NUMPIXELS; j++) {
         cubo[i].setPixelColor(j, red, blue, green);
@@ -181,7 +181,7 @@ void fade_cube() {
     }
   }
 
-  for (blue = 0; blue < 255; blue++) {
+  for (blue = 0; blue < 255; blue=blue+v) {
     for (int i = 0; i < CARAS; i++) {
       for (int j = 0; j < NUMPIXELS; j++) {
         cubo[i].setPixelColor(j, red, blue, green);
@@ -191,7 +191,7 @@ void fade_cube() {
     }
   }
 
-  for (green = 255; green > 0; green--) {
+  for (green = 255; green > 0; green=green-v) {
     for (int i = 0; i < CARAS; i++) {
       for (int j = 0; j < NUMPIXELS; j++) {
         cubo[i].setPixelColor(j, red, blue, green);
@@ -201,7 +201,7 @@ void fade_cube() {
     }
   }
 
-  for (red = 0; red < 255; red++) {
+  for (red = 0; red < 255; red=red+v) {
     for (int i = 0; i < CARAS; i++) {
       for (int j = 0; j < NUMPIXELS; j++) {
         cubo[i].setPixelColor(j, red, blue, green);
@@ -211,7 +211,7 @@ void fade_cube() {
     }
   }
 
-  for (blue = 255; blue > 0; blue--) {
+  for (blue = 255; blue > 0; blue=blue-v) {
     for (int i = 0; i < CARAS; i++) {
       for (int j = 0; j < NUMPIXELS; j++) {
         cubo[i].setPixelColor(j, red, blue, green);
